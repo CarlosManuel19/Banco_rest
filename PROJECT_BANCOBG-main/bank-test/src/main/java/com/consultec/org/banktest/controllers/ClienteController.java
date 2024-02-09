@@ -44,6 +44,12 @@ public class ClienteController {
         return ResponseEntity.ok(clientes);
     }
 
+    @PostMapping("/Guardar")
+    public String GuardarCliente(@RequestBody ClienteDTO clienteDTO){
+        String x = serviceCliente.GuardarCliente(clienteDTO);
+        return x;
+    }
+
 
 
 

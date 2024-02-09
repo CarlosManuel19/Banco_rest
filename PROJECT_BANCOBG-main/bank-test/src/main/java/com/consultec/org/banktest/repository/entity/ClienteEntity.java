@@ -1,9 +1,6 @@
 package com.consultec.org.banktest.repository.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "cliente")
@@ -11,6 +8,7 @@ public class ClienteEntity {
 
     @Id
     @Column(name = "id_cliente")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String nombre;
     private String apellido;
@@ -24,19 +22,7 @@ public class ClienteEntity {
     private String estado;
 
 
-    public ClienteEntity(Long id, String nombre, String apellido, String tipo_documento, Integer id_documento, Integer edad, String sexo, String direccion, String telefono, String email, String estado) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.tipo_documento = tipo_documento;
-        this.id_documento = id_documento;
-        this.edad = edad;
-        this.sexo = sexo;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.email = email;
-        this.estado = estado;
-    }
+
 
     public ClienteEntity() { }
     public void setId(Long id) {

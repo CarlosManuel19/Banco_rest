@@ -10,5 +10,6 @@ public interface IClienteService {
     List<ClienteDTO> fetchClienteList();
     ClienteDTO Encontrarid(Long id);
 
-    ClienteDTO save()
+    String GuardarCliente(ClienteDTO clienteDTO);
+
 }

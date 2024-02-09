@@ -5,7 +5,7 @@ import com.consultec.org.banktest.repository.entity.ClienteEntity;
 
 public class ClienteMap {
 
-    public static ClienteDTO mapCliente(ClienteEntity clienteEntity) {
+    public static ClienteDTO mapClienteEntityToDTO(ClienteEntity clienteEntity) {
         ClienteDTO clienteDTO = new ClienteDTO();
         clienteDTO.setApellido(clienteEntity.getApellido());
         clienteDTO.setDireccion(clienteEntity.getDireccion());
@@ -20,4 +20,23 @@ public class ClienteMap {
         clienteDTO.setTipo_documento(clienteEntity.getTipo_documento());
         return clienteDTO;
     }
+
+    public static ClienteEntity mapClienteDTOToEntity(ClienteDTO clienteDTO) {
+        ClienteEntity clienteEntity = new ClienteEntity();
+        clienteEntity.setApellido(clienteDTO.getApellido());
+        clienteEntity.setDireccion(clienteDTO.getDireccion());
+        clienteEntity.setEdad(clienteDTO.getEdad());
+        clienteEntity.setId(clienteDTO.getId());
+        clienteEntity.setEmail(clienteDTO.getEmail());
+        clienteEntity.setEstado(clienteDTO.getEstado());
+        clienteEntity.setNombre(clienteDTO.getNombre());
+        clienteEntity.setTelefono(clienteDTO.getTelefono());
+        clienteEntity.setSexo(clienteDTO.getSexo());
+        clienteEntity.setId_documento(clienteDTO.getId_documento());
+        clienteEntity.setTipo_documento(clienteDTO.getTipo_documento());
+        return clienteEntity;
+    }
+
+
+
 }
