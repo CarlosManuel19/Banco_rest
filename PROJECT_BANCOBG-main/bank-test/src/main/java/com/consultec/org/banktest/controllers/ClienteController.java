@@ -6,9 +6,7 @@ import com.consultec.org.banktest.services.ClienteServiceImple;
 import com.consultec.org.banktest.services.CuentaServiceImple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,6 +36,17 @@ public class ClienteController {
         List<ClienteDTO> clientes = serviceCliente.fetchClienteList();
         return ResponseEntity.ok(clientes);
     }
+
+    @GetMapping("/FindbyId/{id}")
+    public ResponseEntity <ClienteDTO> findByid(@PathVariable("id") Long id){
+        System.out.println("estoy en el controller"+id);
+        ClienteDTO clientes  = serviceCliente.Encontrarid(id);
+        return ResponseEntity.ok(clientes);
+    }
+
+
+
+
 
 
 }

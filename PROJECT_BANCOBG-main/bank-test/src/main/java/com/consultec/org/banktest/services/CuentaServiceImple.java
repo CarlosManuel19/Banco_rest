@@ -3,6 +3,7 @@ package com.consultec.org.banktest.services;
 import com.consultec.org.banktest.modelo.ClienteDTO;
 import com.consultec.org.banktest.modelo.CuentaDTO;
 import com.consultec.org.banktest.repository.ICuentaRepository;
+import com.consultec.org.banktest.repository.entity.CuentaEntity;
 import com.consultec.org.banktest.services.interfaces.ICuentaService;
 import com.consultec.org.banktest.services.mapping.ClienteMap;
 import com.consultec.org.banktest.services.mapping.CuentaMap;
@@ -23,9 +24,23 @@ public class CuentaServiceImple implements ICuentaService {
     @Override
     public List<CuentaDTO> fetchCuentaList() {
         List<CuentaDTO> cuentaDTO = new ArrayList<>();
-        iCuentaRepository.findAll().forEach(CuentaEntity -> cuentaDTO.add(CuentaMap.mapCuenta(CuentaEntity)));
+        iCuentaRepository.findAll().forEach(cuentaEntity -> cuentaDTO.add(CuentaMap.mapCuenta(cuentaEntity)));
         return cuentaDTO;
     }
+
+    /*
+    @Override
+    public CuentaDTO save(CuentaDTO cuentaDTO) {
+        Cuenta  = CuentaDTO
+                .idCuenta(cuentaDto.getIdCuenta())
+                .nombreCliente(cuentaDto.getNombreCliente())
+                .numeroCuenta(cuentaDto.getNumeroCuenta())
+                .saldo(cuentaDto.getSaldo())
+                .saldo(cuentaDto.getSaldo())
+                .build();
+        return cuentaDTO.save(cuentaDTO);
+    }
+*/
 
 
 }

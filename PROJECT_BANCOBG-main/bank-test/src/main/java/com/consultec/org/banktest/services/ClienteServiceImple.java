@@ -2,7 +2,6 @@ package com.consultec.org.banktest.services;
 
 import com.consultec.org.banktest.modelo.ClienteDTO;
 import com.consultec.org.banktest.repository.IClienteRepository;
-import com.consultec.org.banktest.repository.ICuentaRepository;
 import com.consultec.org.banktest.services.interfaces.IClienteService;
 import com.consultec.org.banktest.services.mapping.ClienteMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,4 +24,17 @@ public class ClienteServiceImple implements IClienteService {
         iClienteRepository.findAll().forEach(clienteEntity -> clienteDTO.add(ClienteMap.mapCliente(clienteEntity)));
         return clienteDTO;
     }
+
+    @Override
+    public ClienteDTO Encontrarid(Long id) {
+        ClienteDTO cliDTO = new ClienteDTO();
+        var clienteOptional = iClienteRepository.findById(id);
+        if (clienteOptional.isEmpty()){
+            return cliDTO;
+        } else {
+            return ClienteMap.mapCliente(clienteOptional.get());
+        }
+    }
+
+
 }
