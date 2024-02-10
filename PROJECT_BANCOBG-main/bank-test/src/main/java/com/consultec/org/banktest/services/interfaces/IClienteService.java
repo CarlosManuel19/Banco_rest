@@ -8,8 +8,10 @@ public interface IClienteService {
 
     // Recuperar toda la lista de clientes
     List<ClienteDTO> fetchClienteList();
-    ClienteDTO Encontrarid(Long id);
+    ClienteDTO encontrarid(Long id);
 
-    String GuardarCliente(ClienteDTO clienteDTO);
+    String guardarCliente(ClienteDTO clienteDTO);
+
+    String eliminarCliente(Long id);
 
 }

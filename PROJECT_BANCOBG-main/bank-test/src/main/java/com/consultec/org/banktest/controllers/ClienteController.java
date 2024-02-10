@@ -5,6 +5,7 @@ import com.consultec.org.banktest.modelo.CuentaDTO;
 import com.consultec.org.banktest.services.ClienteServiceImple;
 import com.consultec.org.banktest.services.CuentaServiceImple;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,14 +41,24 @@ public class ClienteController {
     @GetMapping("/FindbyId/{id}")
     public ResponseEntity <ClienteDTO> findByid(@PathVariable("id") Long id){
         System.out.println("estoy en el controller"+id);
-        ClienteDTO clientes  = serviceCliente.Encontrarid(id);
+        ClienteDTO clientes  = serviceCliente.encontrarid(id);
         return ResponseEntity.ok(clientes);
     }
 
     @PostMapping("/Guardar")
     public String GuardarCliente(@RequestBody ClienteDTO clienteDTO){
-        String x = serviceCliente.GuardarCliente(clienteDTO);
+        String x = serviceCliente.guardarCliente(clienteDTO);
         return x;
+    }
+
+    @DeleteMapping("/Eliminar/{id}")
+    public ResponseEntity<String> eliminarCliente(@PathVariable("id") Long id) {
+        String resultado = serviceCliente.eliminarCliente(id);
+        if (resultado.startsWith("Cliente eliminado")) {
+            return ResponseEntity.ok(resultado);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resultado);
+        }
     }
 
 

@@ -25,7 +25,7 @@ public class ClienteServiceImple implements IClienteService {
     }
 
     @Override
-    public ClienteDTO Encontrarid(Long id) {
+    public ClienteDTO encontrarid(Long id) {
         ClienteDTO cliDTO = new ClienteDTO();
         var clienteOptional = iClienteRepository.findById(id);
         if (clienteOptional.isEmpty()){
@@ -36,13 +36,22 @@ public class ClienteServiceImple implements IClienteService {
     }
 
     @Override
-    public String GuardarCliente(ClienteDTO clienteDTO) {
+    public String guardarCliente(ClienteDTO clienteDTO) {
         ClienteEntity clienteEntity = ClienteMap.mapClienteDTOToEntity(clienteDTO);
         iClienteRepository.save(clienteEntity);
         return "El cliente fue guardado correctamente";
 
     }
 
+    @Override
+    public String eliminarCliente(Long id) {
+        if (iClienteRepository.existsById(id)) {
+            iClienteRepository.deleteById(id);
+            return "Cliente eliminado correctamente.";
+        } else {
+            return "No se pudo encontrar al cliente con ID " + id;
+        }
+    }
 
 
 }
