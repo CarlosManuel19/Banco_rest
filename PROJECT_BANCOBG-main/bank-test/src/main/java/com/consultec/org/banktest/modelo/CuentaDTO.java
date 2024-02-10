@@ -57,7 +57,7 @@ public class CuentaDTO implements Serializable {
         this.estado = estado;
     }
 
-    public String getTipo_cuenta(String tipoCuenta) {
+    public String getTipo_cuenta() {
         return tipo_cuenta;
     }
 
@@ -88,4 +88,6 @@ public class CuentaDTO implements Serializable {
     public void setFecha_creacion(Date fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
     }
+
+
 }

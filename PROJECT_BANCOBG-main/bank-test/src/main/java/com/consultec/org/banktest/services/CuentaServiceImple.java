@@ -24,23 +24,30 @@ public class CuentaServiceImple implements ICuentaService {
     @Override
     public List<CuentaDTO> fetchCuentaList() {
         List<CuentaDTO> cuentaDTO = new ArrayList<>();
-        iCuentaRepository.findAll().forEach(cuentaEntity -> cuentaDTO.add(CuentaMap.mapCuenta(cuentaEntity)));
+        iCuentaRepository.findAll().forEach(cuentaEntity -> cuentaDTO.add(CuentaMap.mapCuentaEntityToDTO(cuentaEntity)));
         return cuentaDTO;
     }
 
-    /*
-    @Override
-    public CuentaDTO save(CuentaDTO cuentaDTO) {
-        Cuenta  = CuentaDTO
-                .idCuenta(cuentaDto.getIdCuenta())
-                .nombreCliente(cuentaDto.getNombreCliente())
-                .numeroCuenta(cuentaDto.getNumeroCuenta())
-                .saldo(cuentaDto.getSaldo())
-                .saldo(cuentaDto.getSaldo())
-                .build();
-        return cuentaDTO.save(cuentaDTO);
+    public String guardarCuenta(CuentaDTO cuentaDTO) {
+        try {
+            CuentaEntity cuentaEntity = CuentaMap.mapCuentaDTOToEntity(cuentaDTO);
+            iCuentaRepository.save(cuentaEntity);
+            return "Cuenta guardada correctamente.";
+        } catch (Exception e) {
+            return "Error al intentar guardar la cuenta. Detalles: " + e.getMessage();
+        }
     }
-*/
+
+    @Override
+    public CuentaDTO encontrarCuentaId(Integer id) {
+        return null;
+    }
+
+    @Override
+    public String borrarCuenta(CuentaDTO cuentaDTO) {
+        return null;
+    }
+
 
 
 }

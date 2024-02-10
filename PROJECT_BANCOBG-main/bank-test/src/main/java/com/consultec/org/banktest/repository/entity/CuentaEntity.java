@@ -35,6 +35,7 @@ public class CuentaEntity {
         this.interes = interes;
         this.fecha_creacion = fecha_creacion;
     }
+
     public CuentaEntity() { }
 
     public String getNumero_cuenta() {

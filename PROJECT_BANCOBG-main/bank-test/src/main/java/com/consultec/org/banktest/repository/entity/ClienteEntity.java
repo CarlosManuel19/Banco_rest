@@ -22,8 +22,6 @@ public class ClienteEntity {
     private String estado;
 
 
-
-
     public ClienteEntity() { }
     public void setId(Long id) {
         this.id = id;

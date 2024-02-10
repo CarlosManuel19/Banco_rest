@@ -1,18 +1,17 @@
 package com.consultec.org.banktest.services.interfaces;
 
 import com.consultec.org.banktest.modelo.CuentaDTO;
+import org.springframework.scheduling.support.SimpleTriggerContext;
 
 import java.util.List;
 
 public interface ICuentaService {
     List<CuentaDTO> fetchCuentaList();
-   /* CuentaDTO save(CuentaDTO cuentaDto);
 
-    CuentaDTO findById(Integer id);
+    String guardarCuenta(CuentaDTO cuentaDto);
 
-    void delete(CuentaDTO cuentaDTO);
+    CuentaDTO encontrarCuentaId(Integer id);
 
-    boolean existsById(Integer id);*/
-
+    String borrarCuenta(CuentaDTO cuentaDTO);
 
 }

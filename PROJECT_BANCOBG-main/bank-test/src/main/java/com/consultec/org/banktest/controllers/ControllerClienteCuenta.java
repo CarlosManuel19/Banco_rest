@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/banco")
-public class ClienteController {
+public class ControllerClienteCuenta {
 
     @Autowired
     ClienteServiceImple serviceCliente;
@@ -45,10 +45,20 @@ public class ClienteController {
         return ResponseEntity.ok(clientes);
     }
 
-    @PostMapping("/Guardar")
+    @PostMapping("/GuardarCliente")
     public String GuardarCliente(@RequestBody ClienteDTO clienteDTO){
         String x = serviceCliente.guardarCliente(clienteDTO);
         return x;
+    }
+
+    @PostMapping("/Guardarcuenta")
+    public ResponseEntity<String> guardarCuenta(@RequestBody CuentaDTO cuentaDTO) {
+        String resultado = serviceCuenta.guardarCuenta(cuentaDTO);
+        if (resultado.startsWith("Cuenta guardada")) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(resultado);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resultado);
+        }
     }
 
     @DeleteMapping("/Eliminar/{id}")
@@ -60,10 +70,6 @@ public class ClienteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resultado);
         }
     }
-
-
-
-
 
 
 }
